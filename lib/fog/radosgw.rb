@@ -12,7 +12,7 @@ module Fog
 
     extend Fog::Provider
 
-    service(:provisioning, 'Provisioning')
-    service(:usage,        'Usage')
+    service(:provisioning, 'radosgw/provisioning', 'Provisioning')
+    service(:usage, 'radosgw/provisioning', 'Usage')
   end
 end
