@@ -18,10 +18,7 @@ module Fog
             response = Excon.get("#{@scheme}://#{@host}/#{path}#{query}",
                                  :headers => signed_headers(params))
             if !response.body.empty?
-              case response.headers['Content-Type']
-              when 'application/json'
-                response.body = Fog::JSON.decode(response.body)
-              end
+              response.body = Fog::JSON.decode(response.body)
             end
             response
           rescue Excon::Errors::NotFound => e
