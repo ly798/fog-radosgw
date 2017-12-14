@@ -24,7 +24,7 @@ module Fog
             query += "&enabled=true"
           end
           begin
-            response = Excon.put("#{@scheme}://#{@host}/#{path}#{query}",
+            response = Excon.put("#{@scheme}://#{@host}:#{@port}/#{path}#{query}",
                                  :headers => signed_headers(params))
             if !response.body.empty?
               response.body = Fog::JSON.decode(response.body)

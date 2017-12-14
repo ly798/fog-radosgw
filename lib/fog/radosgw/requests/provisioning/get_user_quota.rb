@@ -13,7 +13,7 @@ module Fog
               :path => path,
           }
           begin
-            response = Excon.get("#{@scheme}://#{@host}/#{path}#{query}",
+            response = Excon.get("#{@scheme}://#{@host}:#{@port}/#{path}#{query}",
                                  :headers => signed_headers(params))
             if !response.body.empty?
               response.body = Fog::JSON.decode(response.body)

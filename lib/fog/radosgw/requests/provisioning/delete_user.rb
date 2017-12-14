@@ -14,7 +14,7 @@ module Fog
           }
 
           begin
-            response = Excon.delete("#{@scheme}://#{@host}/#{path}#{query}",
+            response = Excon.delete("#{@scheme}://#{@host}:#{@port}/#{path}#{query}",
                                  :headers => signed_headers(params))
             if !response.body.empty?
               response.body = Fog::JSON.decode(response.body)

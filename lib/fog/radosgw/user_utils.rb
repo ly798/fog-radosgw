@@ -10,7 +10,7 @@ module Fog
         }
         query        = "?uid=#{user_id}&format=json&suspended=#{user[:suspended]}"
         begin
-          response = Excon.post("#{@scheme}://#{@host}/#{path}#{query}",
+          response = Excon.post("#{@scheme}://#{@host}:#{@port}/#{path}#{query}",
                                 :headers => signed_headers(params))
           if !response.body.empty?
             case response.headers['Content-Type']
